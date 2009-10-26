@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
-
+  
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
   
@@ -29,9 +29,16 @@ ActionController::Routing::Routes.draw do |map|
   #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
   #     admin.resources :products
   #   end
-
+    
+  map.page 'pages/:id',
+    :controller   => 'pages',
+    :action       => 'show',
+    :requirements => { :id => /[a-z]+/ }
+    
+  map.root :controller => "pages", :id => 'welcome', :action => 'show'
+  
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
+  # map.root :controller => "pages", :id => 'welcome', :action => 'show'
 
   # See how all your routes lay out with "rake routes"
 
