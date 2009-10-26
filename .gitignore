@@ -1,4 +1,6 @@
 db/development.sqlite3
 db/test.sqlite3
 log/cucumber.log
-log/*
+log/development.log
+log/culerity_development.log
+tmp/culerity_rails_server.pid
