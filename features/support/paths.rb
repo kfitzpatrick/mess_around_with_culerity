@@ -6,11 +6,15 @@ module NavigationHelpers
   # step definition in webrat_steps.rb
   #
   def path_to(page_name)
+    relative_path_for(page_name)
+  end
+
+  def relative_path_for(page_name)
     case page_name
-    
+  
     when /the home\s?page/
       '/'
-    
+  
     # Add more mappings here.
     # Here is a more fancy example:
     #

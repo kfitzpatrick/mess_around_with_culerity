@@ -6,7 +6,7 @@ Feature: Test out some plain webrat features
   @noscript
   Scenario: Go to the homepage and see your mom
     Given I am on the homepage
-    When I follow "go see her"
+    When I follow "go to the next page"
     Then I should see "Your Mom in HTML"
 
   @javascript
