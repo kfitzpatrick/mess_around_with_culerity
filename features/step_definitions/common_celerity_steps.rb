@@ -14,6 +14,10 @@ at_exit do
   Process.kill(6, $rails_server.pid.to_i) if $rails_server
 end
 
+Given /^I am on (.+)$/ do |page_name|
+  $browser.goto @host+path_to(page_name)
+end
+
 When /I press "(.*)"/ do |button|
   $browser.button(:text, button).click
   assert_successful_response
@@ -55,13 +59,14 @@ end
 
 Then /I should see "(.*)"/ do |text|
   # if we simply check for the browser.html content we don't find content that has been added dynamically, e.g. after an ajax call
-  div = $browser.div(:text, /#{text}/)
-  begin
-    div.html
-  rescue
-    #puts $browser.html
-    raise("div with '#{text}' not found")
-  end
+  # div = $browser.div(:text, /#{text}/)
+  #   begin
+  #     div.html
+  #   rescue
+  #     #puts $browser.html
+  #     raise("div with '#{text}' not found")
+  #   end
+  $browser.text.include?( text ).should be_true
 end
 
 Then /I should not see "(.*)"/ do |text|
